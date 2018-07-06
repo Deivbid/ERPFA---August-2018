@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+//iNNER coMPONENTS
 import Thumb from '../Thumb';
-
 import util from '../../Utils';
 
 const Product = ({product, addProduct}) => {
