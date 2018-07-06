@@ -29,12 +29,12 @@ export const fetchProducts = (filters, sortBy) => dispatch => {
 		.then( res => {
 			let { products } = res.data;
 
-			if(!!filters && filters.length > 0)
+			if(filters && filters.length > 0)
 			{
 		        products = products.filter( p => filters.find( f => p.availableSizes.find( size => size === f ) ) );
 		    }
 
-		    if(!!sortBy)
+		    if(sortBy)
 		    {
 		        products = products.sort(compare[sortBy]);
 		    }

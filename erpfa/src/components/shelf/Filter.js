@@ -41,7 +41,7 @@ class Filter extends Component {
 		<Checkbox 
 			classes="filters-available-size"
 			label={label}
-			handleCheckboxChange={this.toggleCheckbox}
+			handleCheckboxChange={this.toggleCheckBox }
 			key={label}
 		/>
 	}

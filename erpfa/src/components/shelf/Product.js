@@ -14,7 +14,7 @@ const Product = ({product, addProduct}) => {
 
    	let productInstallment;
   
-  	if(!!product.installments) {
+  	if(product.installments) {
     	const installmentPrice = (product.price / product.installments);
 
     	productInstallment = (
