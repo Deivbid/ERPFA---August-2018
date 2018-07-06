@@ -37,18 +37,18 @@ class Filter extends Component {
 		this.props.updateFilters(Array.from(this.selectedCheckboxes));
 	}
 
-	createCheckBox = (label) => {
+	createCheckBox = (label) => (
 		<Checkbox 
 			classes="filters-available-size"
 			label={label}
-			handleCheckboxChange={this.toggleCheckBox }
+			handleCheckboxChange={this.toggleCheckBox}
 			key={label}
 		/>
-	}
+	)
 
-	createCheckBoxes = () => {
-		availableSizes.map(this.createCheckBox);
-	}
+	createCheckBoxes = () => (
+		availableSizes.map(this.createCheckBox)
+	)
 
 	render(){
 		return(
