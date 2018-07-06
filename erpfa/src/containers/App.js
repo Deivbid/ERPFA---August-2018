@@ -5,9 +5,10 @@ import './App.css'
 import bannerImage from '../static/banner.jpg'
 
 //Components
-import Banner from '../components/Banner'
-import Corner from '../components/github/Corner'
-import Shelf from '../components/shelf/Shelf'
+import Banner from '../components/Banner';
+import Corner from '../components/github/Corner';
+import Shelf from '../components/shelf/Shelf';
+import Footer from '../components/footer';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Shelf />
         </main>
 
+        <Footer />
       </div>
     );
   }

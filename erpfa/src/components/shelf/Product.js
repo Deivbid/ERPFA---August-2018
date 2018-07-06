@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Thumb from '../Thumb';
 
-import util from '../../utils';
+import util from '../../Utils';
 
 const Product = ({product, addProduct}) => {
 	
