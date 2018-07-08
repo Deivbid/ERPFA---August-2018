@@ -106,7 +106,7 @@ class FloatCart extends React.Component {
 
 	    let classes = ['float-cart'];
 
-	    if (this.state.isOpen) {
+	    if (!!this.state.isOpen) {
 	      classes.push('float-cart--open');
 	    }	    
 
@@ -141,7 +141,7 @@ class FloatCart extends React.Component {
 			            </span>
 			            <span className="header-title">Bag</span>
 			        </div>		        		        
-				</div>
+				    
 
 		        <div className="float-cart__shelf-container">
 		            {products}
@@ -168,9 +168,10 @@ class FloatCart extends React.Component {
 			        	</div>
 			        	<div onClick={() => this.proceedToCheckout()} className="buy-btn">
 			              	Checkout
-			            </div>
-		        	</div>	
-		       	</div>			
+			          </div>
+		        </div>	
+		      </div>
+        </div>		
 		);
 	}
 }

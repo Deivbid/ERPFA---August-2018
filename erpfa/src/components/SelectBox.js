@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 class SelectedBox extends Component{
 	contructor(props){
-
+		
 		this.state = {
-			selected: ''
+			selected: '',
 		}
 	}
 
