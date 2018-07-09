@@ -18,7 +18,7 @@ class CheckBox extends Component {
 		        isChecked: !isChecked,
 		      }
 		));
-		console.log(label)
+		
 		handleCheckboxChange(label);
 	}
 

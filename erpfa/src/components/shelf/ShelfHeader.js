@@ -8,14 +8,9 @@ import Clearfix from '../Clearfix';
 const ShelfHeader = ({productsLength}) => {
 
 	return( 
-		<div className='shelf-container-header'>
-			<small className="products-found">
-        		<span>{productsLength} Product(s) found.</span>
-      		</small>
-      		
+		<div className='shelf-container-header'>      		
       		<Sort />
       		<Clearfix />
-
 		</div>
 	)
 }

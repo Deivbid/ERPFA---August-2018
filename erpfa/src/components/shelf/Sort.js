@@ -9,7 +9,7 @@ import { updateSort } from '../../store/actions/sortActions';
 import Selectbox from '../SelectBox';
 
 const sortBy = [
-  { value: '',           label: 'Select'  },
+  { value: '',           label: 'Most Recent'  },
   { value: 'lowestprice', label: 'Lowest to highest' },
   { value: 'highestprice', label: 'Highest to lowest' },
 ];
@@ -20,10 +20,18 @@ class Sort extends Component{
 		this.props.updateSort(value);
 	}
 
+	Sort = () => {
+		return sortBy.map((item, i) => {
+			return(
+				<Selectbox key={i} options={item} handleOnChange={this.handleSort} />
+			)
+		})
+	}
+
 	render() {
 	    return (
 	      	<div className="sort">
-	        	Order by <Selectbox options={sortBy} handleOnChange={this.handleSort} />
+	        	Sort by: {this.Sort()} {/*<Selectbox options={sortBy} handleOnChange={this.handleSort} />*/}
 	      	</div>
 	    );
 	}

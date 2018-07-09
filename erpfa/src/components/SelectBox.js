@@ -2,32 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
 class SelectedBox extends Component{
-	contructor(props){
-		
-		this.state = {
-			selected: '',
-		}
-	}
 
 	createOptions = (options) => options.map(o => <option value={o.value} key={o.value}>{o.label}</option>)
-
 	onChange = (e) => {
-    	this.props.handleOnChange(e.target.value);
+
+    	this.props.handleOnChange(e.value);
   	}
+
+
 
 	render(){
 		const { classes, options } = this.props;
-
 		return(
-		    <select onChange={ (e) => this.onChange(e) } className={classes}>
-		        {this.createOptions(options)}
-		    </select>
+		    <button onClick={ (e) => this.onChange(options) }>
+		        {options.label}
+		    </button>
 		)
 	}
 }
 
 SelectedBox.propTypes = {
-  options: PropTypes.array.isRequired,
+  options: PropTypes.object.isRequired,
   classes: PropTypes.string,
   handleOnChange: PropTypes.func.isRequired,
 };
