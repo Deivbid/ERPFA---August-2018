@@ -11,15 +11,40 @@ main {
   margin: 0 auto;
 }
 
-.main-banner {
-  width: 100%;
-}
-
 .clearfix {
   clear: both;
 }
 
-/* MAC Scrollbar */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+  z-index: 1;
+  height: 80px;
+}
+.header .brand {
+  display: inline-flex;
+  padding: 15px 0;
+}
+.header .user-info {
+  display: inline-flex;
+  float: right;
+  margin-right: 25px;
+}
+.header .user-info .user-item {
+  padding: 0 25px;
+}
+.header .user-info .user-points {
+  margin: auto 0;
+}
+.header .user-info .Blogo {
+  height: 15px;
+}
+
+/* MAC scrollbar para desktop*/
 @media screen and (min-width: 640px) {
   .float-cart__content::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -30,7 +55,7 @@ main {
 
   .float-cart__content::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: #0C0B10;
+    background-color: #0c0b10;
   }
 }
 .float-cart__content {
@@ -38,14 +63,18 @@ main {
   overflow-y: scroll;
 }
 
+.main-banner {
+  width: 100%;
+}
+
 footer {
-  color: #ECECEC;
+  color: #ececec;
   padding: 20px 0;
   text-align: center;
   background-color: #000;
 }
 footer a {
-  color: #ECECEC;
+  color: #ececec;
   text-decoration: none;
 }
 footer a:hover {
@@ -60,7 +89,7 @@ footer a:hover {
   text-align: center;
 }
 .filters .star-button-container small {
-  color: #AAA;
+  color: #aaa;
   margin-bottom: 8px;
   display: inline-block;
 }
@@ -70,12 +99,14 @@ footer a:hover {
 }
 .filters-available-size {
   display: inline-block;
-  /* CUSTOMIZE THE LABEL (CONTAINER) */
+  margin-bottom: 10px;
+  /* Customize the label (the container) */
 }
 .filters-available-size label {
   display: inline-block;
   position: relative;
   cursor: pointer;
+  font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -89,18 +120,18 @@ footer a:hover {
   line-height: 35px;
   text-align: center;
   /* On mouse-over, add a grey background color */
-  /* When the chekbox is checked, add a blue background */
-  /*Sow the checkmark when checked */
-  /*Create a custom checkbox */
+  /* When the checkbox is checked, add a blue background */
+  /* Show the checkmark when checked */
+  /* Create a custom checkbox */
 }
 .filters-available-size label:hover input ~ .checkmark {
   border: 1px solid #1b1a20;
 }
 .filters-available-size label input:checked ~ .checkmark {
   background-color: #1b1a20;
-  color: #ECECEC;
+  color: #ececec;
 }
-.filters-available-size label input:checked ~ .checkmark:After {
+.filters-available-size label input:checked ~ .checkmark:after {
   display: block;
 }
 .filters-available-size label input {
@@ -114,12 +145,13 @@ footer a:hover {
   left: 0;
   width: 35px;
   height: 35px;
-  font-size: 0.8rem;
+  font-size: 0.8em;
   border-radius: 50%;
   line-height: 35px;
   text-align: center;
   color: #1b1a20;
-  background-color: #ECECEC;
+  background-color: #ececec;
+  border: 1px solid transparent;
 }
 
 .shelf-container {
@@ -139,14 +171,14 @@ footer a:hover {
 }
 .shelf-container-header .sort select {
   outline: none;
-  border: 1px solid #ECECEC;
+  border: 1px solid #ececec;
   border-radius: 4px;
   padding: 5px 10px;
   margin-left: 10px;
   cursor: pointer;
 }
 .shelf-container-header .sort select:hover {
-  border: 1px solid #5B5A5E;
+  border: 1px solid #5b5a5e;
 }
 .shelf-container .shelf-item {
   float: left;
@@ -159,14 +191,14 @@ footer a:hover {
   border: 1px solid transparent;
 }
 .shelf-container .shelf-item:hover {
-  border: 1px solid #EEE;
+  border: 1px solid #eee;
 }
 .shelf-container .shelf-item:hover .shelf-item__buy-btn {
   background-color: #eabf00;
 }
 .shelf-container .shelf-item .shelf-stopper {
   position: absolute;
-  color: #ECECEC;
+  color: #ececec;
   top: 10px;
   right: 10px;
   padding: 5px;
@@ -200,11 +232,11 @@ footer a:hover {
   margin-left: 5px;
 }
 .shelf-container .shelf-item__price .installment {
-  color: #9C9B9B;
+  color: #9c9b9b;
 }
 .shelf-container .shelf-item__buy-btn {
   background-color: #1b1a20;
-  color: #FFF;
+  color: #fff;
   padding: 15px 0;
   margin-top: 10px;
   cursor: pointer;
@@ -227,7 +259,7 @@ footer a:hover {
 .float-cart__close-btn {
   width: 50px;
   height: 50px;
-  color: #ECECEC;
+  color: #ececec;
   background-color: #1b1a20;
   text-align: center;
   line-height: 50px;
@@ -236,7 +268,7 @@ footer a:hover {
   left: -50px;
   cursor: pointer;
 }
-.float-cart:hover {
+.float-cart__close-btn:hover {
   background-color: #212027;
 }
 .float-cart .bag {
@@ -268,7 +300,7 @@ footer a:hover {
   display: inline-block;
   width: 18px;
   height: 18px;
-  color: #0C0B10;
+  color: #0c0b10;
   font-weight: bold;
   font-size: 0.7em;
   text-align: center;
@@ -280,7 +312,7 @@ footer a:hover {
   right: 0px;
 }
 .float-cart__header {
-  color: #ECECEC;
+  color: #ececec;
   box-sizing: border-box;
   text-align: center;
   padding: 45px 0;
@@ -294,7 +326,7 @@ footer a:hover {
   min-height: 280px;
 }
 .float-cart__shelf-container .shelf-empty {
-  color: #ECECEC;
+  color: #ececec;
   text-align: center;
   line-height: 40px;
 }
@@ -314,7 +346,7 @@ footer a:hover {
   left: 5%;
 }
 .float-cart__shelf-container .shelf-item--mouseover {
-  background: #0C0B10;
+  background: #0c0b10;
 }
 .float-cart__shelf-container .shelf-item--mouseover .shelf-item__details .title, .float-cart__shelf-container .shelf-item--mouseover .shelf-item__details .desc {
   text-decoration: line-through;
@@ -338,7 +370,7 @@ footer a:hover {
   cursor: pointer;
 }
 .float-cart__shelf-container .shelf-item__del:hover {
-  background-position-x: 17px;
+  background-position-x: -17px;
 }
 .float-cart__shelf-container .shelf-item__thumb, .float-cart__shelf-container .shelf-item__details, .float-cart__shelf-container .shelf-item__price {
   display: inline-block;
@@ -357,11 +389,11 @@ footer a:hover {
   width: 57%;
 }
 .float-cart__shelf-container .shelf-item__details .title {
-  color: #ECECEC;
+  color: #ececec;
   margin: 0;
 }
 .float-cart__shelf-container .shelf-item__details .desc {
-  color: #5B5A5E;
+  color: #5b5a5e;
   margin: 0;
 }
 .float-cart__shelf-container .shelf-item__price {
@@ -375,7 +407,7 @@ footer a:hover {
   box-shadow: 0px -0.5em 1em rgba(0, 0, 0, 0.3);
 }
 .float-cart__footer .sub, .float-cart__footer .sub-price {
-  color: #5B5A5E;
+  color: #5b5a5e;
   vertical-align: middle;
   display: inline-block;
 }
@@ -394,9 +426,9 @@ footer a:hover {
   font-size: 22px;
 }
 .float-cart__footer .buy-btn {
-  color: #ECECEC;
+  color: #ececec;
   text-transform: uppercase;
-  background-color: #0C0B10;
+  background-color: #0c0b10;
   text-align: center;
   padding: 15px 0;
   margin-top: 40px;
@@ -416,7 +448,7 @@ footer a:hover {
     width: 80%;
   }
   .shelf-container .shelf-item {
-    width: 33.33% .shelf-container .shelf-item __title;
+    width: 33.33%;
   }
 }
 @media only screen and (max-width: 640px) {
@@ -454,7 +486,7 @@ footer a:hover {
 }
 @media only screen and (max-width: 460px) {
   main {
-    padding: 2px;
+    padding: 2%;
   }
 
   .filters {
@@ -463,6 +495,23 @@ footer a:hover {
   }
   .filters .title {
     margin-bottom: 15px;
+  }
+
+  .shelf-container-header .products-found {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+  .shelf-container-header .sort {
+    width: 100%;
+    text-align: center;
+  }
+
+  .shelf-container {
+    width: 100%;
+  }
+  .shelf-container .shelf-item {
+    width: 100%;
   }
 }
 

@@ -37,10 +37,6 @@ class Shelf extends Component {
   		this.props.fetchProducts(this.props.filters, sort)
   	}
 
-
-
-
-
 	render(){
 
 		const { products } = this.props;
@@ -57,7 +53,7 @@ class Shelf extends Component {
 
 		return(
 		    <React.Fragment>
-		    	<Filter />
+		    	{/*<Filter />*/}
 		    	<div className='shelf-container'>
 		    		<ShelfHeader productsLength={products.length}/>
 		    		{p}

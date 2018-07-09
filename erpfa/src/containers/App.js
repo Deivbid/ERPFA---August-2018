@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './App.css'
+import './App.css';
 
 //Assets
-import bannerImage from '../static/banner.jpg'
+import bannerImage from '../static/header-x2.png';
 
 //Components
+import Header from '../components/Header';
 import Banner from '../components/Banner';
 import Corner from '../components/github/Corner';
 import Shelf from '../components/shelf/Shelf';
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <div className="App">
 
+        <Header />
         <Corner />
         <Banner src={bannerImage} alt={"Main Banner"} />
 
