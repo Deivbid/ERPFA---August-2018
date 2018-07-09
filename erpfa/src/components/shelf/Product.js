@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 //iNNER coMPONENTS
 import Thumb from '../Thumb';
 import util from '../../Utils';
+import Coin from './../../static/coin.svg';
 
 const Product = ({product, addProduct}) => {
 	
 	// An input component can change the quantity in the future
   	product.quantity = 1;
 
-  	let formattedPrice = util.formatPrice(product.price, product.currencyId);
+  	/*let formattedPrice = util.formatPrice(product.price, product.currencyId);
 
    	let productInstallment;
   
@@ -22,7 +23,7 @@ const Product = ({product, addProduct}) => {
         		<span>or {product.installments} x</span><b> {product.currencyFormat} {util.formatPrice(installmentPrice, product.currencyId)}</b>
       		</div>
     	);
-  	}
+  	}*/
 
   	return( 
   		<div className='shelf-item' >
@@ -30,22 +31,24 @@ const Product = ({product, addProduct}) => {
 
   			<Thumb 
   				classes='shelf-item__thumb'
-  				src={require(`../../static/products/${product.sku}_1.jpg`)}
-  				alt={product.title}
+  				src={product.img.url}
+  				alt={product.name}
   			/>
 
-  			<p className="shelf-item__title">{product.title}</p> 
+  			<p className="shelf-item__title">{product.name}</p> 
   			<div className="shelf-item__price">
   				<div className="val">
-  					<small>{product.currencyFormat}</small>
+  					<small></small>
   					<b>
-  						{formattedPrice.substr(0, formattedPrice.length - 3)} 
+  						{product.cost}
   					</b>
   					<span>
-  						{formattedPrice.substr(formattedPrice.length - 3, 3)}
+  						<img className="shelf-item__coin" src={Coin} alt="aerolab-logo" />
   					</span>
   				</div>
-  				{productInstallment}
+  				{/*<p className="shelf-item__footer">
+            You Can But it
+          </p>*/}
   			</div>
 
   			<div onClick={() => addProduct(product)} className="shelf-item__buy-btn">Add to cart</div>

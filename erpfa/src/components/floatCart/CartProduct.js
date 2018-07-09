@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 //Inner Components
 import Thumb from "./../Thumb";
 import util from '../../Utils';
+import Coin from './../../static/coin.svg';
 
 class CartProduct extends Component{
 	constructor(props){
@@ -25,7 +26,7 @@ class CartProduct extends Component{
 	render(){
 		const {  product, removeProduct } = this.props;
 		const classes = ['shelf-item'];
-
+		console.log(product)
 		if(this.state.isMouseOver){
       		classes.push('shelf-item--mouseover');
     	}
@@ -41,20 +42,20 @@ class CartProduct extends Component{
 
 		        <Thumb
 			        classes="shelf-item__thumb"
-			        src={require(`../../static/products/${product.sku}_2.jpg`)}
-			        alt={product.title}
+			        src={product.img.url}
+			        alt={product.name}
 			    /> 
 
 		        <div className="shelf-item__details">
-		          	<p className="title">{product.title}</p>
+		          	<p className="title">{product.name}</p>
 		          	<p className="desc">
-		            	{`${product.availableSizes[0]} | ${product.style}`} <br />
+		            	{product.category}
 		            	Quantity: {product.quantity}
 		          	</p>
 		        </div>  
 
 		        <div className="shelf-item__price">
-		          	<p>{`${product.currencyFormat}  ${util.formatPrice(product.price)}`}</p>
+		          		<img src={Coin} alt="aerolab-logo" /> {product.cost}
 		        </div>
 
 	        	<div className="clearfix" />	

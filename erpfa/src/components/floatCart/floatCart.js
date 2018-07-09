@@ -10,6 +10,7 @@ import { updateCart } from '../../store/actions/updateCartActions';
 import CartProduct from './CartProduct';
 import PersistentCart from "../../PersistentCart";
 import util from '../../Utils';
+import Coin from './../../static/coin.svg';
 
 
 class FloatCart extends React.Component {
@@ -54,7 +55,7 @@ class FloatCart extends React.Component {
 	    let productAlreadyInCart = false;
 
 	    cartProducts.forEach(cp => {
-	      if (cp.id === product.id) {
+	      if (cp._id === product._id) {
 	        cp.quantity += product.quantity;
 	        productAlreadyInCart = true;
 	      }
@@ -93,13 +94,12 @@ class FloatCart extends React.Component {
 	render() {
 
 		const { cartTotals, cartProducts, removeProduct } = this.props;
-
 		const products = cartProducts.map(p => {
 		    return (
 		        <CartProduct
 		          product={p}
 		          removeProduct={removeProduct}
-		          key={p.id}
+		          key={p._id}
 		        />
 		    );
 	    });
@@ -158,7 +158,7 @@ class FloatCart extends React.Component {
 		            <div className="sub">SUBTOTAL</div>
 			            <div className="sub-price">
 			              	<p className="sub-price__val">
-			                	{`${cartTotals.currencyFormat} ${util.formatPrice(cartTotals.totalPrice, cartTotals.currencyId)}`}
+			                	<img src={Coin} alt="aerolab-logo" /> {`${cartTotals.totalPrice}`}
 			              	</p>
 			              	<small className="sub-price__installment">
 			                	{!!cartTotals.installments && (

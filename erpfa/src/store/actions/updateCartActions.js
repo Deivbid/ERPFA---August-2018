@@ -9,12 +9,12 @@ export const updateCart = (cartProducts) => dispatch => {
   }, 0);
 
   let totalPrice = cartProducts.reduce((sum, p) => {
-    sum += p.price * p.quantity;
+    sum += p.cost * p.quantity;
     return sum;
   }, 0);
 
   let installments = cartProducts.reduce((greater, p) => {
-    greater = p.installments > greater ? p.installments : greater;
+    greater = p.cost > greater ? p.cost : greater;
     return greater;
   }, 0);
   
@@ -23,8 +23,8 @@ export const updateCart = (cartProducts) => dispatch => {
     productQuantity,
     installments,
     totalPrice,
-    currencyId: 'USD',
-    currencyFormat: '$',
+    currencyId: '·',
+    currencyFormat: '·',
   }
 
   persistentCart().persist(JSON.stringify(cartProducts));

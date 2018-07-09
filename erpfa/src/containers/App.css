@@ -273,7 +273,10 @@ footer a:hover {
   cursor: pointer;
   transition: background-color 0.2s;
 }
-
+.shelf-container .shelf-item__coin {
+  display: inline-flex;
+  margin-bottom: -10px;
+}
 .float-cart {
   position: fixed;
   top: 0;
@@ -455,6 +458,10 @@ footer a:hover {
 .float-cart__footer .sub-price__val {
   color: #eabf00;
   font-size: 22px;
+}
+.float-cart__footer .sub-price__val img {
+  width: 20px;
+  height: 17px;
 }
 .float-cart__footer .buy-btn {
   color: #ececec;

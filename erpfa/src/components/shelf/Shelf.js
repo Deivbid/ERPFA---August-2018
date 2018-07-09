@@ -20,7 +20,6 @@ class Shelf extends Component {
 
   	componentWillReceiveProps(nextProps) {
 	    const { filters, sort } = nextProps;
-
 	    if (filters !== this.props.filters){
 	      this.handleFilter(filters);
 	    }
@@ -38,15 +37,14 @@ class Shelf extends Component {
   	}
 
 	render(){
-
-		const { products } = this.props;
+		const {products}  = this.props;
 		    
 	    const p = products.map(p => {
 	      return (
 	        <Product
 	          product={p}
 	          addProduct={this.props.addProduct}
-	          key={p.id}
+	          key={p._id}
 	        />
 	      );
 		});

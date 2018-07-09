@@ -318,6 +318,15 @@ footer {
 
             transition: background-color 0.2s;
         }
+
+        &__coin{
+            display: inline-flex;
+            margin-bottom: -10px;
+        }
+
+        &__foter{
+
+        }
     }
 }
 
@@ -536,7 +545,14 @@ footer {
             &__val {
                 color: $yellow;
                 font-size: 22px;
+
+                img{
+                    width: 20px;
+                    height: 17px;
+                }
             }
+
+
         }
 
         .buy-btn {
