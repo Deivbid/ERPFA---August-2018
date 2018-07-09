@@ -128,6 +128,7 @@ class FloatCart extends React.Component {
 		            onClick={() => this.openFloatCart()}
 		            className="bag bag--float-cart-closed"
 		          >
+		          <i class="fas fa-shopping-cart"></i>
 		            <span className="bag__quantity">{cartTotals.productQuantity}</span>
 		          </span>
 		        )}
@@ -135,6 +136,7 @@ class FloatCart extends React.Component {
 		        <div className="float-cart__content">
 			        <div className="float-cart__header">
 			            <span className="bag">
+			            	<i class="fas fa-shopping-cart"></i>
 			              	<span className="bag__quantity">
 			                	{cartTotals.productQuantity}
 			              	</span>

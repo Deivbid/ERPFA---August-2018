@@ -20,28 +20,42 @@ main {
   top: 0;
   width: 100%;
   padding: 10px 16px;
-  background: #555;
+  background: #fff;
   color: #f1f1f1;
   z-index: 1;
-  height: 80px;
+  height: 35px;
 }
 .header .brand {
   display: inline-flex;
-  padding: 15px 0;
 }
 .header .user-info {
   display: inline-flex;
   float: right;
-  margin-right: 25px;
+  margin-right: 80px;
 }
 .header .user-info .user-item {
-  padding: 0 25px;
+  padding: 0 10px;
+  color: #616161;
 }
-.header .user-info .user-points {
-  margin: auto 0;
+.header .user-info h2 {
+  margin: 0;
+  padding-top: 3px !important;
 }
-.header .user-info .Blogo {
-  height: 15px;
+.header .user-info .points {
+  background: #ededed;
+  border-radius: 100px;
+}
+.header .user-info .points .coin {
+  padding: 0;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+}
+.header .user-info .points .user-points {
+  position: relative;
+  bottom: 11px;
+  padding: 15px;
+  padding-right: 2px;
 }
 
 /* MAC scrollbar para desktop*/
@@ -65,6 +79,7 @@ main {
 
 .main-banner {
   width: 100%;
+  margin-top: 55px;
 }
 
 footer {
@@ -258,11 +273,11 @@ footer a:hover {
 }
 .float-cart__close-btn {
   width: 50px;
-  height: 50px;
+  height: 55px;
   color: #ececec;
   background-color: #1b1a20;
   text-align: center;
-  line-height: 50px;
+  line-height: 55px;
   position: absolute;
   top: 0;
   left: -50px;
@@ -278,19 +293,19 @@ footer a:hover {
   display: inline-block;
   vertical-align: middle;
   margin-right: 15px;
-  background-image: url("./../static/bag-icon.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
 }
 .float-cart .bag--float-cart-closed {
   position: absolute;
-  background-color: #000;
   background-size: 50%;
   left: -60px;
   width: 60px;
-  height: 60px;
+  height: 55px;
   cursor: pointer;
+}
+.float-cart .bag--float-cart-closed .fas {
+  font-size: 40px;
+  margin: 7px;
+  color: #0ad4fa;
 }
 .float-cart .bag--float-cart-closed .bag__quantity {
   bottom: 5px;

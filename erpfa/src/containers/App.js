@@ -26,7 +26,7 @@ class App extends Component {
         </main>
 
         <Footer />
-        <FloatCart />        
+        {/*<FloatCart />*/}        
       </div>
     );
   }

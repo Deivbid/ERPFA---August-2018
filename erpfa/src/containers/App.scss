@@ -25,31 +25,47 @@ main {
     top: 0;
     width: 100%;
     padding: 10px 16px;
-    background: #555;
+    background: #fff;
     color: #f1f1f1;
     z-index: 1;
-    height: 80px;
+    height: 35px;
 
     .brand{
         display: inline-flex;
-        padding: 15px 0;
     }
     .user-info{
         display: inline-flex;
         float: right;
-        margin-right: 25px;
+        margin-right: 80px;
 
         .user-item{
-            padding: 0 25px;
-        }
-        
-        .user-points{
-            margin: auto 0;
+            padding: 0 10px;
+            color: #616161;
         }
 
-        .Blogo{
-            height: 15px;
-        }
+       h2{
+            margin: 0;
+            padding-top: 3px !important;
+       }
+
+       .points{
+            background:#ededed;
+            border-radius:100px;
+
+            .coin{
+                padding: 0;
+                margin-right: 5px;
+                position: relative;
+                top: 2px;
+            }
+            
+            .user-points{
+                position: relative;
+                bottom: 11px;
+                padding: 15px;
+                padding-right: 2px;
+            }
+       }
     }
 }
 
@@ -75,6 +91,7 @@ main {
 
 .main-banner {
     width: 100%;
+    margin-top: 55px;
 }
 
 footer {
@@ -305,11 +322,11 @@ footer {
 
     &__close-btn {
         width: 50px;
-        height: 50px;
+        height: 55px;
         color: #ececec;
         background-color: $black-light;
         text-align: center;
-        line-height: 50px;
+        line-height: 55px;
         position: absolute;
         top: 0;
         left: -50px;
@@ -327,19 +344,20 @@ footer {
         display: inline-block;
         vertical-align: middle;
         margin-right: 15px;
-        background-image: url('./../static/bag-icon.png');
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
 
         &--float-cart-closed {
             position: absolute;
-            background-color: #000;
             background-size: 50%;
             left: -60px;
             width: 60px;
-            height: 60px;
+            height: 55px;
             cursor: pointer;
+
+            .fas{
+                font-size: 40px;
+                margin: 7px;
+                color: #0ad4fa;
+            }
 
             .bag__quantity {
                 bottom: 5px;
