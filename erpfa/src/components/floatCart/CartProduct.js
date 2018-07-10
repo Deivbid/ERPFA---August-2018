@@ -26,7 +26,6 @@ class CartProduct extends Component{
 	render(){
 		const {  product, removeProduct } = this.props;
 		const classes = ['shelf-item'];
-		console.log(product)
 		if(this.state.isMouseOver){
       		classes.push('shelf-item--mouseover');
     	}
@@ -55,7 +54,8 @@ class CartProduct extends Component{
 		        </div>  
 
 		        <div className="shelf-item__price">
-		          		<img src={Coin} alt="aerolab-logo" /> {product.cost}
+						  <img src={Coin} alt="aerolab-logo" /> 
+						  <span>{product.cost}</span>
 		        </div>
 
 	        	<div className="clearfix" />	

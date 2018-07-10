@@ -11,23 +11,9 @@ const Product = ({product, addProduct}) => {
 	// An input component can change the quantity in the future
   	product.quantity = 1;
 
-  	/*let formattedPrice = util.formatPrice(product.price, product.currencyId);
-
-   	let productInstallment;
-  
-  	if(product.installments) {
-    	const installmentPrice = (product.price / product.installments);
-
-    	productInstallment = (
-      		<div className="installment">
-        		<span>or {product.installments} x</span><b> {product.currencyFormat} {util.formatPrice(installmentPrice, product.currencyId)}</b>
-      		</div>
-    	);
-  	}*/
-
   	return( 
   		<div className='shelf-item' >
-  			{ product.isFreeShipping && <div className='shelf-stopper'> Free Shipping </div> }
+  			{ product.cost >= 800 && <div className='shelf-stopper'> Need more    <i class="fas fa-circle"></i> </div> }
 
   			<Thumb 
   				classes='shelf-item__thumb'
