@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 //Assets
 import Brand from '../static/aerolab-logo.svg';
 import Coin from '../static/coin.svg';
-import Bag from '../static/bag-icon.png';
 import FloatCart from './floatCart/floatCart';
+
+//Redux Tools
+import { connect } from 'react-redux';
+import { fetchUser } from '../store/actions/userActions';
 
  class Header extends Component{
  	constructor(props){
@@ -13,9 +17,16 @@ import FloatCart from './floatCart/floatCart';
  		this.state = {
 
  		}
- 	}
+	 }
+	 
+	 componentWillMount(){
+		 this.props.fetchUser();
+	 }
 
  	render(){
+		
+		 const { user } = this.props; 
+		 console.log(user);
  		return(
  			<div className="header">
  				<div className="brand">
@@ -23,9 +34,9 @@ import FloatCart from './floatCart/floatCart';
  				</div>
 
  				<div className="user-info">
- 					<h2 className="name user-item"> David Aparicio </h2>
+ 					<h2 className="name user-item"> {user && user.name} </h2>
  					<div className="points">
- 						<span className="user-points user-item"> 6000 </span>
+ 						<span className="user-points user-item"> {user && user.points} </span>
  						<img className="coin user-item" src={Coin} alt="aerolab-logo" />
  					</div>
  					<FloatCart />
@@ -36,4 +47,12 @@ import FloatCart from './floatCart/floatCart';
  	}
  }
 
- export default Header;
+ Header.propTypes = {
+	fetchUser: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+	user: state.user.info
+ })
+ export default connect(mapStateToProps, { fetchUser })(Header);

@@ -48,8 +48,10 @@ class CartProduct extends Component{
 		        <div className="shelf-item__details">
 		          	<p className="title">{product.name}</p>
 		          	<p className="desc">
-		            	{product.category}
-		            	Quantity: {product.quantity}
+						{product.category}
+						<p>
+							Quantity: {product.quantity}
+						</p>
 		          	</p>
 		        </div>  
 

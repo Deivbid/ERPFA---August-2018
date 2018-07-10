@@ -9,3 +9,6 @@ export const UPDATE_CART 		= 'UPDATE_CART';
 export const UPDATE_FILTER 		= 'UPDATE_FILTER';
 // Sort
 export const UPDATE_SORT 		= 'UPDATE_SORT';
+
+//User
+export const FETCH_USER         = 'FETCH_USER';

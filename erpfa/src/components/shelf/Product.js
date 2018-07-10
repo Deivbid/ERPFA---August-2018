@@ -3,17 +3,29 @@ import PropTypes from "prop-types";
 
 //iNNER coMPONENTS
 import Thumb from '../Thumb';
-import util from '../../Utils';
 import Coin from './../../static/coin.svg';
 
-const Product = ({product, addProduct}) => {
+//Redux Tools
+import { connect } from 'react-redux';
+
+const Product = ({product, addProduct, user}) => {
+	
 	
 	// An input component can change the quantity in the future
-  	product.quantity = 1;
+	let points 
+	product.quantity = 1;
+	if(user)
+	{
+		points = user.points
+	}
+	else
+	{
+		points = 100000;
+	}
 
   	return( 
   		<div className='shelf-item' >
-  			{ product.cost >= 800 && <div className='shelf-stopper'> Need more    <i class="fas fa-circle"></i> </div> }
+  			{ product.cost >= points && <div className='shelf-stopper'> Need more    <i className="fas fa-circle"></i> </div> }
 
   			<Thumb 
   				classes='shelf-item__thumb'
@@ -46,6 +58,7 @@ const Product = ({product, addProduct}) => {
 Product.propTypes = {
   product: PropTypes.object.isRequired,
   addProduct: PropTypes.func.isRequired,
+  user:PropTypes.object.isRequired
 };
 
 export default Product;

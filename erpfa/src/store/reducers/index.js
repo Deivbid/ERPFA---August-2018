@@ -4,6 +4,7 @@ import floatCartReducer from './floatCartReducer';
 import updateCartReducer from './updateCartReducer';
 import filterReducer from './filterReducer';
 import sortReducer from './sortReducer';
+import userReducer from './userReducer';
 
 
 export default combineReducers({
@@ -12,4 +13,5 @@ export default combineReducers({
   cartTotals: updateCartReducer,
   filters: filterReducer,
   sort: sortReducer,
+  user: userReducer
 });

@@ -86,7 +86,8 @@ class FloatCart extends React.Component {
 	      alert("Add some product in the bag!");
 	    }else {
 	      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
-	    }
+			}
+			swal("Good job!", "You clicked the button!", "success");
 	}
 
 

@@ -44,7 +44,8 @@ class Shelf extends Component {
 	        <Product
 	          product={p}
 	          addProduct={this.props.addProduct}
-	          key={p._id}
+						key={p._id}
+						user={this.props.user}
 	        />
 	      );
 		});
@@ -74,7 +75,8 @@ Shelf.propTypes = {
 const mapStateToProps = state => ({
   products: state.products.items,
   filters: state.filters.items,
-  sort: state.sort.item,
+	sort: state.sort.item,
+	user: state.user.info
 })
 
 export default connect(mapStateToProps, { fetchProducts, addProduct })(Shelf);
