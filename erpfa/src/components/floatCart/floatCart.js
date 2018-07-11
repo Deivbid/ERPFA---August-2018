@@ -5,6 +5,7 @@ import PropTypes from'prop-types';
 import { connect } from 'react-redux';
 import { loadCart, removeProduct } from '../../store/actions/floatCartActions';
 import { updateCart } from '../../store/actions/updateCartActions';
+//import { buyProduct } from '../../store/actions/buyProductActions';
 
 //Cart Components
 import CartProduct from './CartProduct';
@@ -12,6 +13,8 @@ import PersistentCart from "../../PersistentCart";
 import util from '../../Utils';
 import Coin from './../../static/coin.svg';
 
+import swal from "sweetalert";
+import axios from "axios";
 
 class FloatCart extends React.Component {
 	constructor(props) {
@@ -71,23 +74,47 @@ class FloatCart extends React.Component {
 
 	removeProduct = (product) => {
 	    const { cartProducts, updateCart } = this.props;
+	    console.log(cartProducts)
+	    if(!product)
+	    {
+	    	cartProducts.splice(0, cartProducts.length);
+	    	updateCart(cartProducts)
+	    }
+	    else
+	    {
+		    const index = cartProducts.findIndex(p => p._id === product._id);
+		    
+		    if (index >= 0) {
+		      cartProducts.splice(index, 1);
 
-	    const index = cartProducts.findIndex(p => p.id === product.id);
-	    if (index >= 0) {
-	      cartProducts.splice(index, 1);
-	      updateCart(cartProducts);
+		      updateCart(cartProducts);
+		    }
 	    }
 	}
 
 	proceedToCheckout = () => {
-	    const { totalPrice, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
+	    const { totalPrice, productQuantity } = this.props.cartTotals;
+	    const productsAPI = "https://aerolab-challenge.now.sh/user/points";
+		const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQyNjUyOTRiYzk1YzAwNThkMWJhMjYiLCJpYXQiOjE1MzEwNzc5MzB9.973QYrXVp38QXdAjXMdxByR5JkA7cC059JchMpa9lXI";
+		let body = { 
+			"amount": 1000,
+		}
 
 	    if (!productQuantity) {
-	      alert("Add some product in the bag!");
+	    	swal("Hey", "Add some product in the bag", "info");
 	    }else {
-	      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
-			}
-			swal("Good job!", "You clicked the button!", "success");
+	    	
+	    	this.removeProduct('');
+	   //  	axios.post(productsAPI, body, { headers: {"Authorization" : `Bearer ${TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/json'}})
+				// .then( res => {		
+				// 	this.removeProduct([])
+				// 	swal("Good job!", "Thanks for purchase in Aerolab :D", "success");
+				// 		
+				// })
+				// .catch( err => {
+				// 	throw new Error('Could not fetch User. Try again later.');
+				// })
+		}	
 	}
 
 

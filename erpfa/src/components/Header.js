@@ -26,7 +26,7 @@ import { fetchUser } from '../store/actions/userActions';
  	render(){
 		
 		 const { user } = this.props; 
-		 console.log(user);
+
  		return(
  			<div className="header">
  				<div className="brand">

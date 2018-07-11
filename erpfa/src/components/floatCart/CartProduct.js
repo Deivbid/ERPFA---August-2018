@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 
 //Inner Components
 import Thumb from "./../Thumb";
-import util from '../../Utils';
-import Coin from './../../static/coin.svg';
+import Coin from "./../../static/coin.svg";
 
 class CartProduct extends Component{
 	constructor(props){
@@ -47,12 +46,12 @@ class CartProduct extends Component{
 
 		        <div className="shelf-item__details">
 		          	<p className="title">{product.name}</p>
-		          	<p className="desc">
+		          	<div className="desc">
 						{product.category}
 						<p>
 							Quantity: {product.quantity}
 						</p>
-		          	</p>
+		          	</div>
 		        </div>  
 
 		        <div className="shelf-item__price">
