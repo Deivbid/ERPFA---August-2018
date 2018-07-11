@@ -94,6 +94,7 @@ class FloatCart extends React.Component {
 
 	proceedToCheckout = () => {
 	    const { totalPrice, productQuantity } = this.props.cartTotals;
+	    const { user } = this.props;
 	    const productsAPI = "https://aerolab-challenge.now.sh/user/points";
 		const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQyNjUyOTRiYzk1YzAwNThkMWJhMjYiLCJpYXQiOjE1MzEwNzc5MzB9.973QYrXVp38QXdAjXMdxByR5JkA7cC059JchMpa9lXI";
 		let body = { 
@@ -101,19 +102,26 @@ class FloatCart extends React.Component {
 		}
 
 	    if (!productQuantity) {
-	    	swal("Hey", "Add some product in the bag", "info");
+	    	swal("Hey", "Add some product in the bag !", "info");
 	    }else {
 	    	
-	    	this.removeProduct('');
-	   //  	axios.post(productsAPI, body, { headers: {"Authorization" : `Bearer ${TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/json'}})
-				// .then( res => {		
-				// 	this.removeProduct([])
-				// 	swal("Good job!", "Thanks for purchase in Aerolab :D", "success");
-				// 		
-				// })
-				// .catch( err => {
-				// 	throw new Error('Could not fetch User. Try again later.');
-				// })
+	    	if(user.points < totalPrice)
+	    	{
+	    		
+	    	}
+	    	axios.post(productsAPI, body, { headers: {"Authorization" : `Bearer ${TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/json'}})
+				.then( res => {		
+					this.removeProduct('');
+					swal("Good job!", "Thanks for purchase in Aerolab :D", "success");
+					
+						
+				})
+				.catch( err => {
+					swal("Error", "There was a mistake :(", "error");
+				})
+
+			console.log("pase por aqui")
+			
 		}	
 	}
 
@@ -220,6 +228,7 @@ const mapStateToProps = state => ({
   newProduct: state.cartProducts.item,
   productToRemove: state.cartProducts.itemToRemove,
   cartTotals: state.cartTotals.item,
+  user: state.user.info
 });
 
 export default connect(mapStateToProps, { loadCart, updateCart, removeProduct})(FloatCart);

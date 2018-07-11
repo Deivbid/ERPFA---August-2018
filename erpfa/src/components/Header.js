@@ -17,9 +17,11 @@ import { fetchUser } from '../store/actions/userActions';
  		this.state = {
 
  		}
+
+
 	 }
 	 
-	 componentWillMount(){
+	componentWillMount(){
 		 this.props.fetchUser();
 	 }
 
