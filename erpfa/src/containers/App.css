@@ -476,6 +476,9 @@ footer a:hover {
   width: 20px;
   height: 17px;
 }
+.float-cart__footer .sub-price .color-red {
+  color: red;
+}
 .float-cart__footer .buy-btn {
   color: #ececec;
   text-transform: uppercase;

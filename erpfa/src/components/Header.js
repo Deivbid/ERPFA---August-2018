@@ -11,23 +11,23 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../store/actions/userActions';
 
  class Header extends Component{
- 	constructor(props){
- 		super(props)
 
- 		this.state = {
-
- 		}
-
-
-	 }
 	 
 	componentWillMount(){
 		 this.props.fetchUser();
 	 }
 
+	componentWillReceiveProps(nextProps) {
+		if(this.props.user){
+			if(this.props.user.points != nextProps.user.points)
+				console.log('entraste')
+				this.props.fetchUser();
+		}
+	}
+
  	render(){
 		
-		 const { user } = this.props; 
+		 const { user } = this.props;
 
  		return(
  			<div className="header">

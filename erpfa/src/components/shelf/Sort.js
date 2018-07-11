@@ -31,7 +31,7 @@ class Sort extends Component{
 	render() {
 	    return (
 	      	<div className="sort">
-	        	Sort by: {this.Sort()} {/*<Selectbox options={sortBy} handleOnChange={this.handleSort} />*/}
+	        	Sort by: {this.Sort()}
 	      	</div>
 	    );
 	}

@@ -5,12 +5,11 @@ import PropTypes from'prop-types';
 import { connect } from 'react-redux';
 import { loadCart, removeProduct } from '../../store/actions/floatCartActions';
 import { updateCart } from '../../store/actions/updateCartActions';
-//import { buyProduct } from '../../store/actions/buyProductActions';
+import { fetchUser } from '../../store/actions/userActions';
 
 //Cart Components
 import CartProduct from './CartProduct';
 import PersistentCart from "../../PersistentCart";
-import util from '../../Utils';
 import Coin from './../../static/coin.svg';
 
 import swal from "sweetalert";
@@ -74,7 +73,6 @@ class FloatCart extends React.Component {
 
 	removeProduct = (product) => {
 	    const { cartProducts, updateCart } = this.props;
-	    console.log(cartProducts)
 	    if(!product)
 	    {
 	    	cartProducts.splice(0, cartProducts.length);
@@ -93,13 +91,11 @@ class FloatCart extends React.Component {
 	}
 
 	proceedToCheckout = () => {
-	    const { totalPrice, productQuantity } = this.props.cartTotals;
-	    const { user } = this.props;
-	    const productsAPI = "https://aerolab-challenge.now.sh/user/points";
-		const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQyNjUyOTRiYzk1YzAwNThkMWJhMjYiLCJpYXQiOjE1MzEwNzc5MzB9.973QYrXVp38QXdAjXMdxByR5JkA7cC059JchMpa9lXI";
-		let body = { 
-			"amount": 1000,
-		}
+			const { totalPrice, productQuantity } = this.props.cartTotals;
+			const { cartProducts, user } = this.props;
+		
+	    const productsAPI = "https://aerolab-challenge.now.sh/redeem";
+			const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQyNjUyOTRiYzk1YzAwNThkMWJhMjYiLCJpYXQiOjE1MzEwNzc5MzB9.973QYrXVp38QXdAjXMdxByR5JkA7cC059JchMpa9lXI";
 
 	    if (!productQuantity) {
 	    	swal("Hey", "Add some product in the bag !", "info");
@@ -107,29 +103,37 @@ class FloatCart extends React.Component {
 	    	
 	    	if(user.points < totalPrice)
 	    	{
-	    		
-	    	}
-	    	axios.post(productsAPI, body, { headers: {"Authorization" : `Bearer ${TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/json'}})
-				.then( res => {		
-					this.removeProduct('');
-					swal("Good job!", "Thanks for purchase in Aerolab :D", "success");
-					
+					swal("Ups D:", "You don't have money enough", "error");
+				}
+				else
+				{
+					cartProducts.map((item, i) => {
+						let body = {
+							"productId": item._id
+						}
 						
-				})
-				.catch( err => {
-					swal("Error", "There was a mistake :(", "error");
-				})
-
-			console.log("pase por aqui")
-			
+						for(let i = 0; i < item.quantity; i++)
+						{
+							axios.post(productsAPI, body, { headers: {"Authorization" : `Bearer ${TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/json'}})
+							.then( res => {		
+								console.log(res)								
+							})
+							.catch( err => {
+								swal("Error", "There was a mistake :(", "error");
+							})
+						}
+					})
+					this.removeProduct('');
+					this.props.fetchUser()
+					swal("Good job!", "Thanks for purchase in Aerolab :D", "success");					
+				}			
 		}	
 	}
 
-
-
 	render() {
 
-		const { cartTotals, cartProducts, removeProduct } = this.props;
+		const { cartTotals, cartProducts, removeProduct, user } = this.props;
+		let points = user ? user.points : 10000;
 		const products = cartProducts.map(p => {
 		    return (
 		        <CartProduct
@@ -140,7 +144,7 @@ class FloatCart extends React.Component {
 		    );
 	    });
 
-	    let classes = ['float-cart'];
+			let classes = ['float-cart'];
 
 	    if (!!this.state.isOpen) {
 	      classes.push('float-cart--open');
@@ -194,12 +198,12 @@ class FloatCart extends React.Component {
 		            <div className="sub">SUBTOTAL</div>
 			            <div className="sub-price">
 			              	<p className="sub-price__val">
-			                	<img src={Coin} alt="aerolab-logo" /> {`${cartTotals.totalPrice}`}
+			                	<img src={Coin} alt="aerolab-logo" /> {cartTotals.totalPrice > points ? <span className="color-red">{cartTotals.totalPrice}</span> : <span> {cartTotals.totalPrice} </span>}
 			              	</p>
 			              	<small className="sub-price__installment">
 			                	{!!cartTotals.installments && (
-			                  	<span>
-			                    	{`OR UP TO ${cartTotals.installments} x ${cartTotals.currencyFormat} ${util.formatPrice(cartTotals.totalPrice / cartTotals.installments, cartTotals.currencyId)}`}
+			                  	<span className="color-red">
+			                    	{ cartTotals.totalPrice > points && "You don't have points enough"}
 			                  	</span>
 			                )}
 			            	</small>
@@ -231,4 +235,4 @@ const mapStateToProps = state => ({
   user: state.user.info
 });
 
-export default connect(mapStateToProps, { loadCart, updateCart, removeProduct})(FloatCart);
+export default connect(mapStateToProps, { loadCart, updateCart, removeProduct, fetchUser})(FloatCart);
